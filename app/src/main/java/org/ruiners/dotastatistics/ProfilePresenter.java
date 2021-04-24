@@ -1,13 +1,13 @@
 package org.ruiners.dotastatistics;
 
+import org.ruiners.dotastatistics.models.profile.ProfileModel;
+
 public interface ProfilePresenter {
-    void onShowMatchClicked();
+    void onLoad();
 
     void onViewDestroyed();
 
     interface View {
-
-        void showMatchId(String id);
-
+        void showProfile(ProfileModel profileModel, double win_rate);
     }
 }
