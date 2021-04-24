@@ -32,12 +32,12 @@ public class ProfilePresenterImpl implements ProfilePresenter {
     }
 
     @Override
-    public void onLoad() {
-        ProfileModel profileModel = profileRepository.getProfile("317099960");
+    public void onLoad(String id) {
+        ProfileModel profileModel = profileRepository.getProfile(id);
         double win = (double)profileModel.win_lose.win;
         double lose = (double)profileModel.win_lose.lose;
         double win_rate = win/(win+lose);
         mView.showProfile(profileModel, win_rate);
-        List<MatchModel> matches = matchRepository.getRecentMatches("317099960");
+        List<MatchModel> matches = matchRepository.getRecentMatches(id);
     }
 }
