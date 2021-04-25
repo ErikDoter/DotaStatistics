@@ -12,7 +12,7 @@ public class GameModes {
         modes.put(1, "All Pick");
         modes.put(2, "Captains Mode");
         modes.put(3, "Random Draft");
-        modes.put(4, "Sindle Draft");
+        modes.put(4, "Single Draft");
         modes.put(5, "All Random");
         modes.put(6, "Intro");
         modes.put(7, "Diretide");

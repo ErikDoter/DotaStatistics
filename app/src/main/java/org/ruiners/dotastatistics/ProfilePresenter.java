@@ -13,5 +13,6 @@ public interface ProfilePresenter {
     interface View {
         void showProfile(ProfileModel profileModel, double win_rate);
         void showRecentMatches(ArrayList<MatchModel> matches);
+        void showMatch(MatchModel model);
     }
 }

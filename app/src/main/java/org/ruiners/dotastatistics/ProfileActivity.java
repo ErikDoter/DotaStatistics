@@ -1,10 +1,15 @@
 package org.ruiners.dotastatistics;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -17,8 +22,9 @@ import org.ruiners.dotastatistics.utils.MatchAdapter;
 
 import java.io.ObjectInputStream;
 import java.util.ArrayList;
+import java.util.zip.Inflater;
 
-public class ProfileActivity extends AppCompatActivity implements ProfilePresenter.View {
+public class ProfileActivity extends BasicActivity implements ProfilePresenter.View {
 
     private ProfilePresenter mProfilePresenter;
 
@@ -61,4 +67,5 @@ public class ProfileActivity extends AppCompatActivity implements ProfilePresent
         matchAdapter.data = matches;
         recyclerView.setAdapter(matchAdapter);
     }
+
 }
