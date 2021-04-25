@@ -1,6 +1,7 @@
 package org.ruiners.dotastatistics.utils;
 
 import android.graphics.Color;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -11,8 +12,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
 
+import org.ruiners.dotastatistics.BasicActivity;
+import org.ruiners.dotastatistics.MatchesActivity;
+import org.ruiners.dotastatistics.ProfileActivity;
 import org.ruiners.dotastatistics.R;
 import org.ruiners.dotastatistics.models.match.MatchModel;
+import org.ruiners.dotastatistics.models.profile.Profile;
 
 public class MatchViewHolder extends RecyclerView.ViewHolder {
     private final LinearLayout item;
@@ -58,5 +63,17 @@ public class MatchViewHolder extends RecyclerView.ViewHolder {
         } catch (NullPointerException e) {
             return;
         }
+        item.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                BasicActivity activity;
+                try {
+                    activity = (BasicActivity) item.getContext();
+                } catch (ClassCastException e) {
+                    return;
+                }
+                activity.showMatch(model);
+            }
+        });
     }
 }

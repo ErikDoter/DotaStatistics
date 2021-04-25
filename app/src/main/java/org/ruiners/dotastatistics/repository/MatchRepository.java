@@ -34,6 +34,24 @@ public class MatchRepository {
         }
     }
 
+    public ArrayList<MatchModel> getAllMatches(String account_id, Integer page) {
+        Integer offset = (page - 1) * 14;
+        String URL = "https://api.opendota.com/api/players/" + account_id + "/matches?limit=14&offset=" + offset.toString();
+        HttpUtil httpUtil = new HttpUtil();
+        httpUtil.Get(URL);
+        String response = httpUtil.answer;
+        Type type = Types.newParameterizedType(List.class, MatchModel.class);
+        Moshi moshi = new Moshi.Builder().build();
+        JsonAdapter<ArrayList<MatchModel>> jsonAdapter = moshi.adapter(type);
+        try {
+            ArrayList<MatchModel> matches;
+            matches = jsonAdapter.fromJson(response);
+            return matches;
+        } catch (IOException e) {
+            return null;
+        }
+    }
+
     public ArrayList<HeroModel> getHeroes() {
         String URL = "https://api.opendota.com/api/heroStats";
         HttpUtil httpUtil = new HttpUtil();
