@@ -9,11 +9,14 @@ import android.os.Bundle;
 import android.util.Log;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.content.SharedPreferences;
 
 import java.math.BigInteger;
 
 
 public class SignInActivity extends AppCompatActivity {
+    private final static String KEY_AUTH_CHECK = "auth_check";
+    private final static String KEY_ID = "id";
     private BigInteger idConst = new BigInteger("76561197960265728");
 
     @Override
@@ -23,7 +26,7 @@ public class SignInActivity extends AppCompatActivity {
         WebView webView = findViewById(R.id.webView);
         webView.getSettings().setJavaScriptEnabled(true);
         final String REALM_PARAM = "DotaStatistics";
-        Intent intent = new Intent(this, ProfileActivity.class);
+        Intent intent = new Intent(this, MainActivity.class);
         // Constructing openid url request
         String url = "https://steamcommunity.com/openid/login?" +
                 "openid.claimed_id=http://specs.openid.net/auth/2.0/identifier_select&" +
@@ -55,7 +58,11 @@ public class SignInActivity extends AppCompatActivity {
                     BigInteger value = new BigInteger(userId);
                     BigInteger id32 = value.subtract(idConst);
                     Log.d("id64", id32.toString());
-                    intent.putExtra("account_id", id32.toString());
+                    SharedPreferences.Editor editor = getSharedPreferences("Settings", MODE_PRIVATE).edit();
+                    editor.putBoolean(KEY_AUTH_CHECK, true);
+                    editor.putString(KEY_ID, id32.toString());
+                    editor.apply();
+                    //intent.putExtra("account_id", id32.toString());
                     startActivity(intent);
                     // Do whatever you want with the user's steam i
                 }
