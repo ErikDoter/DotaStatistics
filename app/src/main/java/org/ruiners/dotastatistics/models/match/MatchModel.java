@@ -6,6 +6,7 @@ public class MatchModel {
     public long match_id;
     public Integer player_slot;
     public boolean radiant_win;
+    public Boolean win;
     public Integer duration;
     public Integer game_mode;
     public Integer lobby_type;

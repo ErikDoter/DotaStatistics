@@ -50,6 +50,13 @@ public class ProfilePresenterImpl implements ProfilePresenter {
                 }
             }
             matches.get(i).mode = GameModes.getInstance().getData(matches.get(i).game_mode);
+            matches.get(i).win = false;
+            if(matches.get(i).radiant_win && matches.get(i).player_slot < 128) {
+                matches.get(i).win = true;
+            }
+            if (!matches.get(i).radiant_win && matches.get(i).player_slot > 127) {
+                matches.get(i).win = true;
+            }
         }
         mView.showRecentMatches(matches);
     }

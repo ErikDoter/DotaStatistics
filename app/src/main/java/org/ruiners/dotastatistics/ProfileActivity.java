@@ -1,6 +1,8 @@
 package org.ruiners.dotastatistics;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.widget.ImageView;
@@ -11,6 +13,7 @@ import com.squareup.picasso.Picasso;
 import org.ruiners.dotastatistics.models.match.MatchModel;
 import org.ruiners.dotastatistics.models.profile.ProfileModel;
 import org.ruiners.dotastatistics.presentation.ProfilePresenterImpl;
+import org.ruiners.dotastatistics.utils.MatchAdapter;
 
 import java.io.ObjectInputStream;
 import java.util.ArrayList;
@@ -52,6 +55,10 @@ public class ProfileActivity extends AppCompatActivity implements ProfilePresent
 
     @Override
     public void showRecentMatches(ArrayList<MatchModel> matches) {
-
+        RecyclerView recyclerView = findViewById(R.id.recent_matches);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        MatchAdapter matchAdapter = new MatchAdapter();
+        matchAdapter.data = matches;
+        recyclerView.setAdapter(matchAdapter);
     }
 }
