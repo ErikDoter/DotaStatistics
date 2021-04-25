@@ -1,7 +1,7 @@
 package org.ruiners.dotastatistics.models.profile;
 
 public class Profile {
-    public int account_id;
+    public Integer account_id;
     public String personaname;
     public String name;
     public boolean plus;

@@ -8,8 +8,11 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
+import org.ruiners.dotastatistics.models.match.MatchModel;
 import org.ruiners.dotastatistics.models.profile.ProfileModel;
 import org.ruiners.dotastatistics.presentation.ProfilePresenterImpl;
+
+import java.util.ArrayList;
 
 public class ProfileActivity extends AppCompatActivity implements ProfilePresenter.View {
 
@@ -44,5 +47,10 @@ public class ProfileActivity extends AppCompatActivity implements ProfilePresent
         loses.setText(String.valueOf(profileModel.win_lose.lose));
         TextView winrate = (TextView)findViewById(R.id.winrate);
         winrate.setText(String.format("%.2f", win_rate*100) + "%");
+    }
+
+    @Override
+    public void showRecentMatches(ArrayList<MatchModel> matches) {
+
     }
 }
