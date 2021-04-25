@@ -12,6 +12,7 @@ import org.ruiners.dotastatistics.models.match.MatchModel;
 import org.ruiners.dotastatistics.models.profile.ProfileModel;
 import org.ruiners.dotastatistics.presentation.ProfilePresenterImpl;
 
+import java.io.ObjectInputStream;
 import java.util.ArrayList;
 
 public class ProfileActivity extends AppCompatActivity implements ProfilePresenter.View {
