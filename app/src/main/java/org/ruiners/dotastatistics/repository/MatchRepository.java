@@ -1,12 +1,21 @@
 package org.ruiners.dotastatistics.repository;
 
+import android.app.Application;
 import android.text.style.AlignmentSpan;
 import android.util.Log;
+
+import androidx.room.Room;
+import androidx.room.RoomDatabase;
 
 import com.squareup.moshi.JsonAdapter;
 import com.squareup.moshi.Moshi;
 import com.squareup.moshi.Types;
 
+import org.ruiners.dotastatistics.db.AppDatabase;
+import org.ruiners.dotastatistics.db.AppDatabase_Impl;
+import org.ruiners.dotastatistics.db.Matches;
+import org.ruiners.dotastatistics.db.MatchesDao;
+import org.ruiners.dotastatistics.db.MatchesDao_Impl;
 import org.ruiners.dotastatistics.models.hero.HeroModel;
 import org.ruiners.dotastatistics.models.match.MatchModel;
 
