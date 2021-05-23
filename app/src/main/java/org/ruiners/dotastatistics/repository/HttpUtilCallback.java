@@ -1,5 +1,6 @@
 package org.ruiners.dotastatistics.repository;
 
+import android.os.Handler;
 import android.util.Log;
 
 import org.jetbrains.annotations.NotNull;
@@ -18,12 +19,10 @@ import okhttp3.ResponseBody;
 
 public class HttpUtilCallback {
     public String answer;
-    private Presenter presenter;
+    private Handler handler;
 
-    public HttpUtilCallback(Presenter p){
-        presenter = p;
-    }
-    public void Get(String URL) {
+    public void Get(String URL, Handler h) {
+        handler = h;
         OkHttpClient client = new OkHttpClient();
         Request request = new Request.Builder()
                 .url(URL)
@@ -40,14 +39,10 @@ public class HttpUtilCallback {
                     if (!response.isSuccessful()) throw new IOException("Unexpected code " + response);
                     String s = responseBody.string();
                     configure(s);
-
+                    handler.sendEmptyMessage(0);
                 }
             }
         });
-        while (this.answer == null) {
-            Log.d("123", "sssssssssssssss");
-        }
-        presenter.onLoad(answer);
     }
 
     private void configure(String response) {

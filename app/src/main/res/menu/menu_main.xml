@@ -19,7 +19,11 @@
         android:orderInCategory="100"
         android:title="Favorite"
         app:showAsAction="never"/>
-
+    <item
+        android:id="@+id/Heroes"
+        android:orderInCategory="100"
+        android:title="Heroes"
+        app:showAsAction="never"/>
     <item
         android:id="@+id/logout"
         android:orderInCategory="100"
