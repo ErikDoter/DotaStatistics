@@ -37,6 +37,7 @@ public class HttpUtil {
             }
         });
         while (this.answer == null) {
+            Log.d("123", "sssssssssssssss");
         }
     }
 

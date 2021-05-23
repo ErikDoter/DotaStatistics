@@ -10,7 +10,8 @@ public class AllMatchModel {
     public Integer game_mode;
     public Integer radiant_score;
     public boolean radiant_win;
-    public String skill;
+    public Integer skill;
+    public String skill_str;
     public List<Player> players;
     public String mode;
     public String duration_all;

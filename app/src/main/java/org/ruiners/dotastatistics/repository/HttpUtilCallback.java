@@ -45,6 +45,7 @@ public class HttpUtilCallback {
             }
         });
         while (this.answer == null) {
+            Log.d("123", "sssssssssssssss");
         }
         presenter.onLoad(answer);
     }

@@ -1,5 +1,6 @@
 package org.ruiners.dotastatistics.presentation;
 
+import android.os.Message;
 import android.util.Log;
 
 import com.squareup.moshi.JsonAdapter;
@@ -14,6 +15,8 @@ import org.ruiners.dotastatistics.repository.MatchRepository;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import android.os.Handler;
+import java.util.logging.LogRecord;
 
 public class MatchPresenterImpl extends Presenter implements MatchPresenter {
     private MatchPresenter.View mview;
@@ -53,7 +56,7 @@ public class MatchPresenterImpl extends Presenter implements MatchPresenter {
                 }
             }
         }
-        Integer hours = allMatchModel.duration / 360;
+        Integer hours = allMatchModel.duration / 3600;
         Integer minutes = allMatchModel.duration / 60 % 60;
         Integer seconds = allMatchModel.duration % 60;
         String hours_string = hours.toString();
@@ -70,6 +73,15 @@ public class MatchPresenterImpl extends Presenter implements MatchPresenter {
             allMatchModel.win = "Radiant win";
         } else {
             allMatchModel.win = "Dire win";
+        }
+        if(allMatchModel.skill == 3) {
+            allMatchModel.skill_str = "Normal";
+        }
+        if(allMatchModel.skill == 2) {
+            allMatchModel.skill_str = "High";
+        }
+        if(allMatchModel.skill == 1) {
+            allMatchModel.skill_str = "Very High";
         }
         mview.showMatch(allMatchModel);
     }
