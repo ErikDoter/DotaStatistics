@@ -18,12 +18,14 @@ import org.ruiners.dotastatistics.db.MatchesDao;
 import org.ruiners.dotastatistics.db.MatchesDao_Impl;
 import org.ruiners.dotastatistics.models.hero.HeroModel;
 import org.ruiners.dotastatistics.models.match.MatchModel;
+import org.ruiners.dotastatistics.presentation.Presenter;
 
 import java.io.IOException;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.Callable;
 
 public class MatchRepository {
     public ArrayList<MatchModel> getRecentMatches(String account_id) {
@@ -77,5 +79,12 @@ public class MatchRepository {
             Log.d("getHeroes", "error with json");
             return null;
         }
+    }
+
+    public void getMatch(Presenter presenter, long match_id) {
+        String id = String.valueOf(match_id);
+        String URL = "https://api.opendota.com/api/matches/" + id;
+        HttpUtilCallback http = new HttpUtilCallback(presenter);
+        http.Get(URL);
     }
 }
