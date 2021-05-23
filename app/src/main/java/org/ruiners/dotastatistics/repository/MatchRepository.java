@@ -1,6 +1,7 @@
 package org.ruiners.dotastatistics.repository;
 
 import android.app.Application;
+import android.os.Handler;
 import android.text.style.AlignmentSpan;
 import android.util.Log;
 
@@ -84,7 +85,12 @@ public class MatchRepository {
     public void getMatch(Presenter presenter, long match_id) {
         String id = String.valueOf(match_id);
         String URL = "https://api.opendota.com/api/matches/" + id;
-        HttpUtilCallback http = new HttpUtilCallback(presenter);
-        http.Get(URL);
+        HttpUtilCallback http = new HttpUtilCallback();
+        Handler h = new Handler() {
+            public void handleMessage(android.os.Message msg) {
+                presenter.onLoad(http.answer);
+            }
+        };
+        http.Get(URL, h);
     }
 }

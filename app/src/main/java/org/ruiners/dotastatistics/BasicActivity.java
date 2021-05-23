@@ -44,6 +44,9 @@ public class BasicActivity extends AppCompatActivity {
             case R.id.profile:
                 presenter.onProfileClicked();
                 break;
+            case R.id.Heroes:
+                presenter.onHeroesClicked();
+                break;
         }
         return super.onOptionsItemSelected(item);
     }

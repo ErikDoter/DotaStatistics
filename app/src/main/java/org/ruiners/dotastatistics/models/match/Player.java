@@ -8,7 +8,7 @@ public class Player {
     public Integer kills;
     public Integer deaths;
     public Integer assists;
-    public String personaname;
+    public String personaname = "Unknown";
     public Integer gold_per_min;
     public Integer xp_per_min;
     public boolean isRadiant;

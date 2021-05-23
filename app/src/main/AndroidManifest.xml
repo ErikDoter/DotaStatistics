@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.DotaStatistics">
-        <activity android:name=".MatchActivity"></activity>
+        <activity android:name=".HeroesActivity"></activity>
+        <activity android:name=".MatchActivity" />
         <activity android:name=".MatchesActivity" />
         <activity android:name=".BasicActivity" />
         <activity android:name=".SignInActivity" />

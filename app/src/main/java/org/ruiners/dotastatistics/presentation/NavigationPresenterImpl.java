@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 
 import org.ruiners.dotastatistics.BasicActivity;
+import org.ruiners.dotastatistics.HeroesActivity;
 import org.ruiners.dotastatistics.MainActivity;
 import org.ruiners.dotastatistics.MatchesActivity;
 import org.ruiners.dotastatistics.NavigationPresenter;
@@ -43,6 +44,15 @@ public class NavigationPresenterImpl implements NavigationPresenter {
         String id32 = settings.getString(KEY_ID, "0");
         intent.putExtra("account_id", id32);
         intent.putExtra("page", 1);
+        mView.startActivity(intent);
+    }
+
+    @Override
+    public void onHeroesClicked() {
+        SharedPreferences settings = mView.getSharedPreferences("Settings", mView.MODE_PRIVATE);
+        Intent intent = new Intent(mView, HeroesActivity.class);
+        String id32 = settings.getString(KEY_ID, "0");
+        intent.putExtra("account_id", id32);
         mView.startActivity(intent);
     }
 
