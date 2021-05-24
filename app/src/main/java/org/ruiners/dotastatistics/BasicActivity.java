@@ -11,6 +11,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
+import org.ruiners.dotastatistics.models.heroes.BestHeroes;
 import org.ruiners.dotastatistics.models.match.MatchModel;
 import org.ruiners.dotastatistics.presentation.NavigationPresenterImpl;
 
@@ -57,6 +58,17 @@ public class BasicActivity extends AppCompatActivity {
         String id32 = settings.getString(KEY_ID, "0");
         intent.putExtra("account_id", id32);
         intent.putExtra("match", model.match_id);
+        startActivity(intent);
+    }
+
+    public void showAllMatches(BestHeroes model) {
+        SharedPreferences settings = getSharedPreferences("Settings", MODE_PRIVATE);
+        Intent intent = new Intent(this, MatchesActivity.class);
+        String id32 = settings.getString(KEY_ID, "0");
+        intent.putExtra("account_id", id32);
+        Log.d("hero_id", model.hero_id);
+        intent.putExtra("hero_id", model.hero_id);
+        intent.putExtra("page", 1);
         startActivity(intent);
     }
 }

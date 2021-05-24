@@ -46,9 +46,13 @@ public class MatchRepository {
         }
     }
 
-    public ArrayList<MatchModel> getAllMatches(String account_id, Integer page) {
+    public ArrayList<MatchModel> getAllMatches(String account_id, Integer page, String hero_id) {
+        String queryHero = "";
         Integer offset = (page - 1) * 14;
-        String URL = "https://api.opendota.com/api/players/" + account_id + "/matches?limit=14&offset=" + offset.toString();
+        if(hero_id != "") {
+            queryHero = "&hero_id=" + hero_id;
+        }
+        String URL = "https://api.opendota.com/api/players/" + account_id + "/matches?limit=14&offset=" + offset.toString() + queryHero;
         HttpUtil httpUtil = new HttpUtil();
         httpUtil.Get(URL);
         String response = httpUtil.answer;

@@ -1,5 +1,6 @@
 package org.ruiners.dotastatistics;
 
+import org.ruiners.dotastatistics.models.heroes.BestHeroes;
 import org.ruiners.dotastatistics.models.match.MatchModel;
 import org.ruiners.dotastatistics.models.profile.ProfileModel;
 

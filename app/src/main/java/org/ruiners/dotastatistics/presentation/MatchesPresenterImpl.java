@@ -18,8 +18,8 @@ public class MatchesPresenterImpl implements MatchesPresenter {
     }
 
     @Override
-    public void onLoad(String id, Integer page) {
-        ArrayList<MatchModel> matches = repository.getAllMatches(id, page);
+    public void onLoad(String id, Integer page, String hero_id) {
+        ArrayList<MatchModel> matches = repository.getAllMatches(id, page, hero_id);
         ArrayList<HeroModel> heroes = repository.getHeroes();
         for (int i = 0; i < matches.size(); i++) {
             for(HeroModel hero: heroes) {
